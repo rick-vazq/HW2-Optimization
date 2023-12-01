@@ -34,7 +34,7 @@ def allowed_quantity(model, m, n):
 
 def flow_rule(model , k):
     # if it is a final destination - dont flow out . If it is a 
-    if k =='Ireland' or k =='Poland' or k == 'Italy' or k =='Switzerland' or k ==value(model.origin):
+    if k in ["Italy", "Switzerland", "Ireland","Poland", value(model.origin)]:
         return Constraint.Skip
     
     # the inflow from one origin to a destination MUST equal the outflow from origin to destination.
@@ -46,7 +46,7 @@ def flow_rule(model , k):
     return inflow==outflow
 
 def requested_oil(model, i):
-    if i== "Italy" or i== "Switzerland" or i== "Ireland" or i== "Poland":
+    if i in ["Italy", "Switzerland", "Ireland","Poland"]:
         return sum(model.flow[j, k] for (j,k) in model.P if k==i)>=model.needs[i]
     else:
         return Constraint.Skip
@@ -55,4 +55,3 @@ def requested_oil(model, i):
 model.flow_rule = Constraint(model.C, rule = flow_rule)
 model.allowed_quantity = Constraint(model.P, rule = allowed_quantity)
 model.requested_oil = Constraint(model.C, rule = requested_oil)
-    

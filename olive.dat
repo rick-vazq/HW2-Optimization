@@ -1,11 +1,12 @@
 set C := Spain Ireland Poland Italy Switzerland France Monaco UK Belgium Netherlands Germany;
-set P := (Spain, France) (France, Monaco) (France, Italy) (France, Switzerland) (France, Belgium) (France, UK) (Belgium, Netherlands) (Belgium, Germany) (France, Germany) (UK, Ireland) (Netherlands, Germany) (Germany, Poland);
+set P := (Spain, France) (Spain, Italy) (France, Monaco) (France, Italy) (France, Switzerland) (France, Belgium) (France, UK) (Belgium, Netherlands) (Belgium, Germany) (France, Germany) (UK, Ireland) (Netherlands, Germany) (Germany, Poland);
 
 param origin := Spain;
 
 
 param maximum :=
-Spain France 200
+Spain France 160
+Spain Italy 50
 France Monaco 20
 France Italy 150
 France Switzerland 40
@@ -19,8 +20,8 @@ Netherlands Germany 20
 Germany Poland 60;
 
 param needs :=
-Ireland 1
-Poland 1
-Italy 1
-Switzerland 1;
+Ireland 50
+Poland 45
+Italy 100
+Switzerland 15;
 

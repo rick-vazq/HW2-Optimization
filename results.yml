@@ -6,12 +6,12 @@
 # ----------------------------------------------------------
 Problem: 
 - Name: unknown
-  Lower bound: 200.0
-  Upper bound: 200.0
+  Lower bound: 210.0
+  Upper bound: 210.0
   Number of objectives: 1
-  Number of constraints: 22
-  Number of variables: 12
-  Number of nonzeros: 35
+  Number of constraints: 23
+  Number of variables: 13
+  Number of nonzeros: 37
   Sense: maximize
 # ----------------------------------------------------------
 #   Solver Information
@@ -24,7 +24,7 @@ Solver:
       Number of bounded subproblems: 0
       Number of created subproblems: 0
   Error rc: 0
-  Time: 0.06300163269042969
+  Time: 0.04175209999084473
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -36,22 +36,26 @@ Solution:
   Message: None
   Objective:
     obj:
-      Value: 200
+      Value: 210
   Variable:
     flow[Belgium,Germany]:
-      Value: 9
-    flow[France,Belgium]:
-      Value: 9
-    flow[France,Italy]:
-      Value: 150
-    flow[France,Switzerland]:
       Value: 40
+    flow[France,Belgium]:
+      Value: 40
+    flow[France,Germany]:
+      Value: 5
+    flow[France,Italy]:
+      Value: 50
+    flow[France,Switzerland]:
+      Value: 15
     flow[France,UK]:
-      Value: 1
+      Value: 50
     flow[Germany,Poland]:
-      Value: 9
+      Value: 45
     flow[Spain,France]:
-      Value: 200
+      Value: 160
+    flow[Spain,Italy]:
+      Value: 50
     flow[UK,Ireland]:
-      Value: 1
+      Value: 50
   Constraint: No values
