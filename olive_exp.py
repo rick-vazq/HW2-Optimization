@@ -11,9 +11,9 @@ model.P = Set(within = model.C*model.C)
 model.origin = Param(within = model.C)
 
 
-model.maximum = Param(model.P, mutable=True)
+model.maximum = Param(model.P)
 
-model.needs = Param(model.C, mutable=True)
+model.needs = Param(model.C)
 
 model.flow = Var(model.P, within = NonNegativeReals)
 
@@ -22,7 +22,7 @@ model.flow = Var(model.P, within = NonNegativeReals)
 
 def objective_rule(model):
 
-    obj_val = sum(model.flow[origin,dest] for origin,dest in model.T if dest =='Ireland' or dest =='Poland' or dest == 'Italy' or dest =='Switzerland')
+    obj_val = sum(model.flow[origin,dest] for origin,dest in model.P if dest =='Ireland' or dest =='Poland' or dest == 'Italy' or dest =='Switzerland')
 
     return obj_val
 
@@ -54,5 +54,5 @@ def requested_oil(model, i):
 
 model.flow_rule = Constraint(model.C, rule = flow_rule)
 model.allowed_quantity = Constraint(model.P, rule = allowed_quantity)
-model.requesedt_oil = Constraint(model.C, rule = requested_oil)
+model.requested_oil = Constraint(model.C, rule = requested_oil)
     
