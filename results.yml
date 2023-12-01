@@ -6,8 +6,8 @@
 # ----------------------------------------------------------
 Problem: 
 - Name: unknown
-  Lower bound: -inf
-  Upper bound: inf
+  Lower bound: 200.0
+  Upper bound: 200.0
   Number of objectives: 1
   Number of constraints: 22
   Number of variables: 12
@@ -18,10 +18,40 @@ Problem:
 # ----------------------------------------------------------
 Solver: 
 - Status: ok
-  Termination condition: infeasible
+  Termination condition: optimal
   Statistics: 
     Branch and bound: 
       Number of bounded subproblems: 0
       Number of created subproblems: 0
   Error rc: 0
-  Time: 0.04111933708190918
+  Time: 0.06300163269042969
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 1
+  number of solutions displayed: 1
+- Gap: 0.0
+  Status: feasible
+  Message: None
+  Objective:
+    obj:
+      Value: 200
+  Variable:
+    flow[Belgium,Germany]:
+      Value: 9
+    flow[France,Belgium]:
+      Value: 9
+    flow[France,Italy]:
+      Value: 150
+    flow[France,Switzerland]:
+      Value: 40
+    flow[France,UK]:
+      Value: 1
+    flow[Germany,Poland]:
+      Value: 9
+    flow[Spain,France]:
+      Value: 200
+    flow[UK,Ireland]:
+      Value: 1
+  Constraint: No values
