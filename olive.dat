@@ -1,0 +1,33 @@
+
+
+Set C := Spain, Ireland, Poland, Italy, Switzerland, France, Monaco, UK, Belgium, Netherlands, Germany;
+Set P := (Spain, France) (France, Monaco) (France, Italy) (France, Switzerland) (France, Belgium) (France, UK) (Belgium, Netherlands) (Belgium, Germany)  (France, Germany) (UK, Ireland) (Netherlands, Germany) (Germany Poland)
+
+# destination: is the importer country of olive oil assuming origin is producer country, Spain
+# maximum: allowed quantity of olive oil to pass by a country
+# needs: quantity of oil(in tons.) each country requests
+
+
+
+param origin := Spain;
+param destination := Ireland, Poland, Italy, Switzerland;
+
+param maximum := 
+Spain, France 200
+France, Monaco 20
+France, Italy 150
+France, Switzerland 40
+France, Belgium 40
+France, UK 50
+Belgium, Netherlands 30
+Belgium, Germany 40
+France, Germany 30
+UK, Ireland 50
+Netherlands, Germany 20
+Germany, Poland 60
+
+param needs := 
+Ireland 40 # value
+Poland 20
+Italy 137
+Switzerland 50
