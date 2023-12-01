@@ -19,8 +19,8 @@ Netherlands Germany 20
 Germany Poland 60;
 
 param needs :=
-Ireland 40
-Poland 20
-Italy 30
-Switzerland 50;
+Ireland 1
+Poland 1
+Italy 1
+Switzerland 1;
 
