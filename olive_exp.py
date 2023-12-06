@@ -15,7 +15,7 @@ model.maximum = Param(model.P)
 
 model.needs = Param(model.C)
 
-model.flow = Var(model.P, within = NonNegativeReals)
+model.flow = Var(model.P, within=NonNegativeIntegers)
 
 
 # Objective Function
