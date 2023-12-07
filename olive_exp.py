@@ -15,7 +15,8 @@ model.maximum = Param(model.P)
 
 model.needs = Param(model.C)
 
-model.flow = Var(model.P, within=NonNegativeIntegers)
+model.flow = Var(model.P, within=Binary)
+
 
 
 # Objective Function
@@ -26,28 +27,26 @@ def objective_rule(model):
 
     return obj_val
 
-model.obj = Objective(rule = objective_rule, sense = maximize)
+model.obj = Objective(rule = objective_rule, sense = minimize)
 
 
 def allowed_quantity(model, m, n):
     return model.flow[m, n] <= model.maximum[m, n]
 
-def flow_rule(model , k):
-    # if it is a final destination - dont flow out . If it is a 
-    if k in ["Italy", "Switzerland", "Ireland","Poland", value(model.origin)]:
+def flow_rule(model, k):
+    if k in ["Italy", "Switzerland", "Ireland", "Poland", value(model.origin)]:
         return Constraint.Skip
-    
-    # the inflow from one origin to a destination MUST equal the outflow from origin to destination.
-    # calculating the inflow
-    inflow = sum(model.flow[origin,dest] for (origin,dest) in model.P if dest==k)
-    # calculating the outflow.
-    outflow = sum(model.flow[origin,dest] for (origin,dest) in model.P if origin==k)
 
-    return inflow==outflow
+    # The inflow and outflow are binary variables, so you don't need to sum them
+    inflow = sum(model.flow[origin, dest] for (origin, dest) in model.P if dest == k)
+    outflow = sum(model.flow[origin, dest] for (origin, dest) in model.P if origin == k)
+
+    return inflow == outflow
 
 def requested_oil(model, i):
-    if i in ["Italy", "Switzerland", "Ireland","Poland"]:
-        return sum(model.flow[j, k] for (j,k) in model.P if k==i)>=model.needs[i]
+    if i in ["Italy", "Switzerland", "Ireland", "Poland"]:
+        # Requested oil constraint for binary variables
+        return sum(model.flow[j, k] for (j, k) in model.P if k == i) >= model.needs[i]
     else:
         return Constraint.Skip
 
