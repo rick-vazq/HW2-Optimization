@@ -6,22 +6,56 @@
 # ----------------------------------------------------------
 Problem: 
 - Name: unknown
-  Lower bound: -inf
-  Upper bound: inf
+  Lower bound: 210.0
+  Upper bound: 210.0
   Number of objectives: 1
   Number of constraints: 23
   Number of variables: 13
   Number of nonzeros: 37
-  Sense: minimize
+  Sense: maximize
 # ----------------------------------------------------------
 #   Solver Information
 # ----------------------------------------------------------
 Solver: 
 - Status: ok
-  Termination condition: infeasible
+  Termination condition: optimal
   Statistics: 
     Branch and bound: 
-      Number of bounded subproblems: 0
-      Number of created subproblems: 0
+      Number of bounded subproblems: 1
+      Number of created subproblems: 1
   Error rc: 0
-  Time: 0.047652244567871094
+  Time: 0.0847477912902832
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 1
+  number of solutions displayed: 1
+- Gap: 0.0
+  Status: optimal
+  Message: None
+  Objective:
+    obj:
+      Value: 210
+  Variable:
+    flow[Belgium,Germany]:
+      Value: 40
+    flow[France,Belgium]:
+      Value: 40
+    flow[France,Germany]:
+      Value: 20
+    flow[France,Italy]:
+      Value: 10
+    flow[France,Switzerland]:
+      Value: 40
+    flow[France,UK]:
+      Value: 50
+    flow[Germany,Poland]:
+      Value: 60
+    flow[Spain,France]:
+      Value: 160
+    flow[Spain,Italy]:
+      Value: 50
+    flow[UK,Ireland]:
+      Value: 50
+  Constraint: No values
