@@ -49,7 +49,7 @@ def flow_rule(model , k):
 
 def requested_oil(model, i):
     if i in ["Italy", "Switzerland", "Ireland","Poland"]:
-        return sum(model.flow[j, k]*model.maximum[j,k] for (j,k) in model.P if k==i)>=model.needs[i]
+        return sum(model.flow[j, k] for (j,k) in model.P if k==i)>=model.needs[i]
     else:
         return Constraint.Skip
 

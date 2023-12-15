@@ -24,7 +24,7 @@ Solver:
       Number of bounded subproblems: 1
       Number of created subproblems: 1
   Error rc: 0
-  Time: 0.0847477912902832
+  Time: 0.059952497482299805
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -43,15 +43,15 @@ Solution:
     flow[France,Belgium]:
       Value: 40
     flow[France,Germany]:
-      Value: 20
+      Value: 5
     flow[France,Italy]:
-      Value: 10
+      Value: 50
     flow[France,Switzerland]:
-      Value: 40
+      Value: 15
     flow[France,UK]:
       Value: 50
     flow[Germany,Poland]:
-      Value: 60
+      Value: 45
     flow[Spain,France]:
       Value: 160
     flow[Spain,Italy]:
