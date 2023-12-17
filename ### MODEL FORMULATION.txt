@@ -1,0 +1,63 @@
+### MODEL FORMULATION
+
+#### SETS
+
+- C = Set of Countries (each one represent a **node**). (to denote we use the subscript C.)
+  
+    - (**Destinations:** Ireland, Poland, Italy, Switzerland ; **In between:** France, Monaco, UK, Belgium, Netherlands, and Germany. **Origin**: Spain.)
+  
+- P = Set of connections (connected countries for flow). Shown as a set ($\text{country}_i , \text{country}_j$).
+
+
+
+
+#### PARAMETERS
+
+- Origin = source node, in our case **SPAIN**
+
+- Maximum = maximum quantity of olive oil allowed to pass from country to country in pairs ($\text{country}_i \rightarrow \text{country}_j$) represented as **$M_{ij}$**.
+
+- Needs = amount of olive oil required by importer countries. $N_{i}$.
+
+
+#### VARIABLES
+
+- $Flow_{ij}$ = flow between country *i* to country *j*
+  
+- For each pair of nodes $i,j \in C$ that are defined in P (as the explicit pairs allowed).
+ 
+$$Flow_{ij}=\left\{\begin{array}{ll}
+\text{max flow} & \textrm{if there is flow $j$ right after node $i$}\\
+0 & \textrm{otherwise}
+\end{array}\right.$$
+
+
+#### OBJECTIVE FUNCTION
+
+Objective function is to maximize the amount of olive oil arriving at the final nodes (importer countries $\in N$ ). Therefore, it is the total sum of the flow in every pair of countries **(connections)** that arrive to a final destination defined in the Needs Parameter (Ireland, Poland, Switzerland, Italy).
+
+$$\text{max} \;\; \sum_{i,j\in P}^{} Flow_{ij}, \quad\forall j \in \text{Needs}$$
+
+
+#### CONSTRAINTS
+
+- 1. Flow of oil outward of each country (in each pair of connections in P) must be less than the maximum amount it has:
+
+$$\forall{i,j \in C}, \;\text{for pairs ij} \in P,\quad  flow_{ij} \;\;\leq\;\; maximum_{ij}$$
+
+- 2. **Flow Conservation Rule**. Flow into a node must be equal to the flow out of a node except if we are in source (Origin = Spain) or destination (Needs = Ireland, Switzerland, Italy, Poland), to fulfill.
+  
+
+$$ \forall{b \in C}, \sum_{i \in P} Flow_{ib} = \sum_{j \in P} Flow_{bj} \;\;\text{iff}\;\; b\neq j, \;j \in \text{Needs} \;\text{or} \;\;i \in \text{Origin} $$
+
+
+- 3. We must ensure that that importer countries receive at least their required amount of oil pacted in the agreement.
+
+
+$$\forall{b \in C}, \sum_{b,j \in C} Flow_{bj} \geq \text{Needs}_j$$
+
+
+
+
+
+
