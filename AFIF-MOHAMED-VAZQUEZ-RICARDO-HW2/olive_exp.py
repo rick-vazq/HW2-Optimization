@@ -7,17 +7,16 @@ model.C = Set()
 # Initialize the Points with the cartesian product of the countries we have.
 model.P = Set(within = model.C*model.C)
 
-# Spain is the starting point
+# Spain is the starting point -> ORIGIN NODE
 model.origin = Param(within = model.C)
 
 model.maximum = Param(model.P)
 
 model.needs = Param(model.C)
 
-# decision variables
+# Decision variables
 model.flow = Var(model.P, within=NonNegativeIntegers)
 
-# final_destinations
 # Objective Function
 
 def objective_rule(model):
@@ -28,12 +27,13 @@ def objective_rule(model):
 
 model.obj = Objective(rule = objective_rule, sense = maximize)
 
-
+# Constraint 1
 def allowed_quantity(model, m, n):
     return model.flow[m, n] <= model.maximum[m, n]
 
 
 
+# Constraint 2
 def flow_rule(model , k):
     # if it is a final destination - dont flow out . If it is not then make sure the inflow and outflow are equal.
     if k in ["Italy", "Switzerland", "Ireland","Poland", value(model.origin)]:
@@ -47,6 +47,8 @@ def flow_rule(model , k):
 
     return inflow==outflow
 
+
+# Constraint 3
 def requested_oil(model, i):
     if i in ["Italy", "Switzerland", "Ireland","Poland"]:
         return sum(model.flow[j, k] for (j,k) in model.P if k==i)>=model.needs[i]
